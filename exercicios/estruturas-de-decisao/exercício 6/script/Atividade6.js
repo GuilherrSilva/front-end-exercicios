@@ -21,3 +21,5 @@ if ( formacao == 'graduação') {
 }
 
 console.log(`Sua pontuação final é de: ${pontuacao}`);
+
+''

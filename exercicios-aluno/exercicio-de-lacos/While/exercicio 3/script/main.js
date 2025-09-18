@@ -4,9 +4,8 @@ let contador = prompt('Digite um número');
 
 
 
-while ( simulador < 999) {
+while ( simulador <= contador) {
     numero = numero + 1;
     simulador = simulador + 1;
-    contador = contador + 1;
     console.log(numero)
 }

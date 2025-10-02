@@ -1,4 +1,4 @@
-let cor = document.getElementById('fundo')
+const cor = document.getElementById('fundo')
 let mudanca = document.getElementById('cor')
 
 

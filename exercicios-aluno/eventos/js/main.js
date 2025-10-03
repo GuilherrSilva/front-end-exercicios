@@ -1,46 +1,43 @@
-const botao = document.getElementById('btn-adicionar');
-const item = document.querySelector('#novo-item') ;
-const pessoa = document.querySelector('#nome-pessoa') ;
+// Constantes
+const botao   = document.getElementById('btn-adicionar');
+const item    = document.querySelector('#novo-item');
+const pessoa  = document.querySelector('#nome-pessoa');
 
-const listaDeItens = document.querySelector('.itens')
+const listaDeItens = document.querySelector('.itens');
 
+// Funções
+function adicionaItem() {
+	if ( item.value == '' ) {
+		alert('Preencha o campo item');
+	} else {
+		// Div (elemento mãe)
+		let novoItem = document.createElement('div');
+		
+		// Elementos filhos
+		novoItem.innerHTML = `
+			<h3 class="item">${item.value}</h3>
+			<p class="pessoa"></p>
+			<button class="trazer">Eu trago!</button>
+		`;
 
-function adicionarItem(evento) {
-    if (item.value == '') {
-        alert('Preencha ambos os campos');
-    } else {
-        // Div (elemento mãe)
-        let novoItem = document.createElement('div');
+		// Adiciona elemento na página como filho de listaDeItens
+		listaDeItens.appendChild(novoItem);
 
-        //Elementos filhos
-        novoItem.innerHTML = `
-            <h3 class="item">${item.value}</h3>
-            <p class="pessoa"></p>
-            <button class="trazer"> Eu trago! </button>
-            <button class="remover"> remover </button>
-        `
-        //Adiciona elemento na página como filho de ListaDeItens
-        listaDeItens.appendChild(novoItem)
-
-        // Adicionar evento ao botão de voluntariar-se
-        const botaoTrazer = listaDeItens.querySelector('.trazer');
-        botaoTrazer.onclick = trazerItem
-    }
+		// Adicionar evento ao botão de voluntariar-se
+		const botaoTrazer = novoItem.querySelector('.trazer');
+		botaoTrazer.onclick = trazerItem;
+	}
 }
 
 function trazerItem(evento) {
-    let botaoClicado = evento.target;
-    let divDoItem = botaoClicado.parentNode;
+	let botaoClicado = evento.target;
+	let divDoItem = botaoClicado.parentNode;
 
-    let paragrafo = divDoItem.querySelector('.pessoa');
+	let paragrafo = divDoItem.querySelector('.pessoa');
 
-    paragrafo.innerText = pessoa.value;
-
-
-
-   // pessoa.value
-   // console.log('Eu trago!')
+	paragrafo.innerText = pessoa.value;
 }
 
-botao.onclick = adicionarItem;
 
+// Eventos
+botao.onclick = adicionaItem;
